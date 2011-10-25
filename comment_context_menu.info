@@ -1,0 +1,4 @@
+name = Comment context menu
+description = Add to comments contextual menu
+core = 7.x
+dependencies[] = comment

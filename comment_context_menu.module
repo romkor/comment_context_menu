@@ -1,0 +1,29 @@
+<?php
+
+function comment_context_menu_menu_alter(&$items)
+{
+    $items['comment/%comment/edit']['context'] = MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE;
+    $items['comment/%/delete']['context'] = MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE;
+    $items['node']['context'] = MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE;
+    
+    $items['node/%node/edit']['context'] = MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE;
+}
+
+/**
+ * Реализация hook_comment_view()
+ */
+function comment_context_menu_comment_view($comment, $view_mode, $langcode)
+{
+    if ($view_mode == 'full')
+    {
+        $comment->content['#contextual_links']['comment'] = array('comment', array($comment->cid));
+    }
+}
+
+function comment_context_menu_node_view($node, $view_mode, $langcode)
+{
+    if ($view_mode == 'full')
+    {
+        $node->content['#contextual_links']['node'] = array('node', array($node->nid));
+    }
+}
