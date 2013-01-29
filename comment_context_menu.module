@@ -9,9 +9,6 @@ function comment_context_menu_menu_alter(&$items)
     $items['node/%node/edit']['context'] = MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE;
 }
 
-/**
- * Реализация hook_comment_view()
- */
 function comment_context_menu_comment_view($comment, $view_mode, $langcode)
 {
     if ($view_mode == 'full')
